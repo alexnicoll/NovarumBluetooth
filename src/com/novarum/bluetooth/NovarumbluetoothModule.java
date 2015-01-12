@@ -365,16 +365,14 @@ public class NovarumbluetoothModule extends KrollModule
 
 	
 	private void PostReceivedData(String data)
-	throws Exception {
+	{
 		if(data == null)
 			return;
 		
-		byte[] dataBytes = getFirst128Bytes(data);
-		String processedData = new String(dataBytes,0, dataBytes.length ,"UTF-8"); 
 		
 		KrollDict receivedict = new KrollDict();
 		
-		receivedict.put("data", processedData);
+		receivedict.put("data", data);
 		this.fireEvent("nb_onReceiveData", receivedict);
 		
 		
